@@ -154,6 +154,7 @@ function fbss_allowRefresh() {
 }
 // Refresh parts of the page.
 function fbss_refresh() {
+
   if (Drupal.heartbeat) {
     Drupal.heartbeat.pollMessages();
   }

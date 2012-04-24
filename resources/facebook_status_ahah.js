@@ -9,6 +9,10 @@ if (Drupal.jsEnabled) {
  * Override of Drupal.ahah.prototype.success to allow for new Drupal.settings.
  */
 Drupal.ahah.prototype.success = function (response, status) {
+  $('#status_message').html($('#edit-fbss-status').val());
+  $('#edit-fbss-status').blur();
+  $('#edit-fbss-status').val('What\'s on your mind');
+  $('#edit-fbss-status').css('color', '#CCCCCC');
   var wrapper = $(this.wrapper);
   var form = $(this.element).parents('form');
   // Manually insert HTML into the jQuery object. Using $() directly crashes
