@@ -12,8 +12,8 @@ Drupal.behaviors.facebook_status_enter = function(context) {
     }
   });
   ctxt.find('.facebook-status-text').keypress(function(e) {
-    // Submit the form (via AHAH if possible) when the user hits Shift+Enter.
-    if (e.which == 13 && shift && $(this).val().length) {
+    // Submit the form (via AHAH if possible) when the user hits Shift+Enter. NOW ONLY ENTER NOT SHIFT ENTER...
+    if (e.which == 13 && $(this).val().length) {
       e.preventDefault();
       var $form = $(this).parents('form');
       var $element = $form.find('.facebook-status-submit');
