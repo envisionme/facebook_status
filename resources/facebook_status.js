@@ -1,6 +1,38 @@
 var fbss_allowClickRefresh = true;
 var fbss_refreshIDs;
 Drupal.behaviors.facebookStatus = function (context) {
+
+// Copied from facebook_status_enter.js - the file doesn't get included on njs.
+
+var ctxt = $(context);
+  var shift = false;
+  ctxt.find('.facebook-status-text').keydown(function(e) {
+    if (e.which == 16) {
+      shift = true;
+    }
+  });
+  ctxt.find('.facebook-status-text').keyup(function(e) {
+    if (e.which == 16) {
+      shift = false;
+    }
+  });
+  ctxt.find('.facebook-status-text').keypress(function(e) {
+    // Submit the form (via AHAH if possible) when the user hits Shift+Enter. NOW ONLY ENTER NOT SHIFT ENTER...
+    if (e.which == 13 && $(this).val().length) {
+      e.preventDefault();
+      var $form = $(this).parents('form');
+      var $element = $form.find('.facebook-status-submit');
+      if (Drupal.settings.ahah && Drupal.settings.ahah[$element[0].id]) {
+        $element.trigger(Drupal.settings.ahah[$element[0].id].event);
+      }
+      else {
+	$form.submit();
+      }
+    }
+  });
+
+  // End - facebook_status_enter.js
+
   var initialLoad = false;
   // Drupal passes document as context on page load.
   if (context == document) {
