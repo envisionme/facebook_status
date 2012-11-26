@@ -1,5 +1,5 @@
 Drupal.behaviors.facebook_status_enter = function(context) {
-  var ctxt = $(context);
+/*  var ctxt = $(context);
   var shift = false;
   ctxt.find('.facebook-status-text').keydown(function(e) {
     if (e.which == 16) {
@@ -24,5 +24,5 @@ Drupal.behaviors.facebook_status_enter = function(context) {
         $form.submit();
       }
     }
-  });
+  });*/
 }
