@@ -19,7 +19,7 @@ function fbss_flag_views_default_views() {
   $view->base_table = 'facebook_status';
   $view->is_cacheable = FALSE;
   $view->api_version = 2;
-  $view->disabled = !flag_get_flag('follow')->status; // Line modified from default
+  $view->disabled = empty(flag_get_flag('follow')->status); // Line modified from default
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
     'sid' => array(
@@ -282,7 +282,7 @@ function fbss_flag_views_default_views() {
       'default_argument' => '',
       'validate_type' => 'user',
       'validate_fail' => 'not found',
-      'facebook_status_flag_type' => flag_get_flag('follow')->fid, // Line modified from default
+      'facebook_status_flag_type' => empty(flag_get_flag('follow')->fid) ? NULL : flag_get_flag('follow')->fid, // Line modified from default
       'id' => 'user-flag-plus-arg',
       'table' => 'facebook_status',
       'field' => 'user-flag-plus-arg',

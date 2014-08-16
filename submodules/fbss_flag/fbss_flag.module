@@ -57,7 +57,7 @@ function fbss_flag_views_api() {
 function fbss_flag_views_default_views_alter(&$views) {
   // Add the "like" field to default Views.
   $flag = flag_get_flag('like');
-  if (!$flag || !$flag->status) {
+  if (empty($flag) || empty($flag->status)) {
     return;
   }
   // This whole function only applies to default Views, not overridden ones.
